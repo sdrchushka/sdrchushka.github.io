@@ -64,7 +64,7 @@ var movement = 1;
 // Выход из функции
 
 function exit(){
-    
+    location.reload();
 }
 
 //рисуем объекты
@@ -88,10 +88,12 @@ function draw() {
         && xPos <= pipes[i].x + pipe.width
         && (yPos + 800 <= pipes[i].y + pipe.height
             || yPos + garip.height >= pipes[i].y + pipe.height)){
-
+                
+                setTimeout(exit,3000); // перезагрузка через 3 секунды
                 fuckyou.play();
                 ctx.drawImage(end, 0 , 0);
                 window.cancelAnimationFrame();
+                setTimeout(exit,1000);
                 
             }
 
