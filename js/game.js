@@ -28,7 +28,7 @@ function down() {
 }
 
 function jumpForward(){
-    if(event.code == 'ArrowUp' || event.code == 'KeyW'){
+    if(event.code == 'KeyW'){
     yPos -=190;
     xPos += 300;
     setTimeout(down,100);
@@ -39,7 +39,7 @@ function jumpForward(){
 document.addEventListener("keydown", jumpBack);
 
 function jumpBack(){
-    if(event.code == 'ArrowDown' || event.code == 'KeyS'){
+    if(event.code == 'KeyS'){
     yPos -=190;
     xPos -= 300;
     setTimeout(down,100);
@@ -96,7 +96,14 @@ function draw() {
                 setTimeout(exit,1000);
                 
             }
-
+    
+    if(xPos > cvs.width){
+        setTimeout(exit,3000); // перезагрузка через 3 секунды
+        fuckyou.play();
+        ctx.drawImage(end, 0 , 0);
+        window.cancelAnimationFrame();
+        setTimeout(exit,1000);
+    }
 
 }
     ctx.drawImage(fg, 0, cvs.height - fg.height);
